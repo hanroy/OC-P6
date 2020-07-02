@@ -6,3 +6,10 @@
 
 
 **Created by H4nR0y**
+
+# Requirement 
+ os
+ subprocess
+ shutil
+ time
+ sys
