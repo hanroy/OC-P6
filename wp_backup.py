@@ -1,15 +1,5 @@
 #! /usr/bin/env python3
 
-#######################################################
-# To Do                                               #
-## lftp delete folder older than 5 days               #
-## add log                                            #
-## (json, yaml) file for variable  (done)             #
-## Slides                                             #
-## Github readme                                      
-## mieux commenter le script                          #
-#######################################################
-
 """
 ============================================
         Automate wordpress backup
@@ -43,7 +33,7 @@ d1 = today.strftime("%m-%d-%Y")
 # variables                                           #
 #######################################################
 
-with open("variables.json", "r") as f:
+with open("/root/backup-wp/variables.json", "r") as f:
     my_dict = json.load(f)
 
 wp_backup_path = (my_dict["wp_bkp_local_path"]) +d1   #set wordpress backup folder
@@ -54,7 +44,7 @@ ftp_ip = (my_dict["ftp_ip"]) #set ftp IP
 ftp_port = int((my_dict["ftp_port"])) #set ftp port
 ftp_login = (my_dict["ftp_login"]) #set ftp login
 ftp_password = (my_dict["ftp_password"]) #set ftp password
-
+shell_script = (my_dict["shell_script"])
 
 #######################################################
 # Wordpress clean backup folder                       #
@@ -160,9 +150,9 @@ create_wp_bkp_folder()
 
 def call_shell_backupbdd():
     try:
-        file = open('/root/backupbdd.sh', 'r')
+        file = open(shell_script, 'r')
         lg.info(f'{file} exist!')
-        session = subprocess.Popen(['/root/backupbdd.sh'], stdout=PIPE, stderr=PIPE)
+        session = subprocess.Popen([shell_script], stdout=PIPE, stderr=PIPE)
         lg.info('The backup is successfully executed')
         stdout, stderr = session.communicate(input="Hello from the other side!")
         if stderr:
@@ -209,7 +199,6 @@ for filename in files_list:
 
 
 if folder in ftps.nlst() : #check if 'wordpress-todayDate' exist inside '/home/wordpress'
-    print('Yes')
     ftps.cwd(folder) #change into "wordpress-todayDate" directory
 else :
     ftps.mkd(folder) #Create a new directory called "wordpress-todayDate" on the server.
@@ -227,5 +216,4 @@ placeFiles()
 ftps.quit()
 print('Closing FTP connection')
 ftps.close() #close connection
-
 

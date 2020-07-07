@@ -6,5 +6,6 @@
   "ftp_ip" :"192.168.141.142",
   "ftp_port": "21",
   "ftp_login": "wordpress",
-  "ftp_password": "ubuntu"
+  "ftp_password": "ubuntu",
+  "shell_script": "/root/backup-wp/backupbdd.sh"
 }
