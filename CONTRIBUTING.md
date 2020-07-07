@@ -5,7 +5,7 @@
 - Cliquer sur Fork : 
 <p align="center"><img width=100% src="https://github.com/hanroy/OC-P6/blob/master/images/how_to_fork.png"></p>
 - Ensuite cloner le repo sur votre machine. 
-`git clone https://github.com/'your-username'/OC-P6.git`
+`git clone https://github.com/your-username/OC-P6.git`
 
 ### 2 - Apporter des modifications 
 
