@@ -1,0 +1,10 @@
+{
+  "wp_bkp_local_path": "/root/backup/wordpress-",
+  "wp_bkp_path": "/root/backup/",
+  "folder": "wordpress-",
+  "days": "5",
+  "ftp_ip" :"192.168.141.142",
+  "ftp_port": "21",
+  "ftp_login": "wordpress",
+  "ftp_password": "ubuntu"
+}
