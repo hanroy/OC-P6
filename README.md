@@ -23,6 +23,8 @@
 3. [Fonctionnement du programme wp_backup.py](#part3)
 4. [Log](#part4)
 5. [Crontab](#part5)
+6. [Les limitations du programme](#part6)
+7. [Contribution](#part7)
 
 ## <a name="part1"> 1. Contexte du projet: </a>
 Pour garantir la continuité du service et accès au site web en cas de soucis, une sauvegarde est effectuée tout les soirs via un script python.  
@@ -59,5 +61,16 @@ Le programme se déroule ainsi :
 
 ## <a name="part5"> 5. Crontab: </a>
 via crontab -l (on affiche la tâche planifiée à 5h30 tout les jours)
-
 `30 5 * * 1 sh /root/scriptBackup.py | tee /var/log/scriptBackup.log_$(date +"%m-%d-%y") | mail -s "Backup Log" @EMAIL`
+
+## <a name="part6"> 6. Les limitations du programme: </a>
+Des fonctionnalités doivent être rajouté au programme pour avoir une solution plus complète :
+- Supprimer les vieilles sauvegarde de plus de 5 jours sur le serveur FTP.
+- Affiner les logs.
+- Ajouter une fonction pour vérifier l'intégrité des fichiers sauvegardés.
+- Compléter le programme par une solution complémentaire de restauration.
+
+## <a name="part7"> 7. Contribution: </a>
+Toute [contribution](https://github.com/hanroy/OC-P6/blob/master/CONTRIBUTING.md) est la bienvenue.
+
+
