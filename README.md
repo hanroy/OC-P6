@@ -25,10 +25,39 @@
 5. [Crontab](#part5)
 
 ## <a name="part1"> 1. Contexte du projet: </a>
+Pour garantir la continuité du service et accès au site web en cas de soucis, une sauvegarde est effectuée tout les soirs via un script python.  
+
 ## <a name="part2"> 2. Configuration de l'environnement: </a>
 #### <a name="part2.1"> - La machine webserver: </a>
-#### <a name="part2.2"> - Le serveur FTP: </a>
-## <a name="part3"> 3. Fonctionnement du programme wp_backup.py: </a>
-## <a name="part4"> 4. Log: </a>
-## <a name="part5"> 5. Crontab: </a>
+- CentOS 8
+- LAMP
+- Base de donnée MariaDB
+- Python 3.6.8
+- Le dossier qui héberge les élements du site : `/var/www/html/wordpress`
 
+#### <a name="part2.2"> - Le serveur FTP: </a>
+- CentOS8
+- LFTP
+- Dossier de sauvegarde wordpress : `/home/wordpress`
+
+## <a name="part3"> 3. Fonctionnement du programme wp_backup.py: </a>
+Le programme se compose de 3 fichiers :
+- wp_backup.py
+- variables.json
+- backupbdd.sh
+
+Le programme se déroule ainsi :
+- Supprimer les anciens dossiers de sauvegardes en local et ne garder que les 5 derniers jours.
+- Créer le nouveau dossier de sauvegarde avec la date du jour 
+- Exécuter un script shell qui :
+  - Sauvegarde de la base de donnée, en utilisant la commande 'wp' : `BddBackup.$(date +"%m-%d-%Y").sql`
+  - Sauvegarder le dossier /var/www/html/wordpress et le compresser avec la date du jour : `WordpressBackup.$(date +"%m-%d-%Y").tar.gz`
+- Envoie de la sauvegarde à un serveur FTP distant 
+## <a name="part4"> 4. Log: </a>
+- Fichier de log généré par le crontab 
+- Envoie du log par Email 
+
+## <a name="part5"> 5. Crontab: </a>
+via crontab -l (on affiche la tâche planifiée à 5h30 tout les jours)
+
+`30 5 * * 1 sh /root/scriptBackup.py | tee /var/log/scriptBackup.log_$(date +"%m-%d-%y") | mail -s "Backup Log" @EMAIL`
