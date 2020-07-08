@@ -48,6 +48,12 @@ Le programme se compose de 3 fichiers :
 - variables.json
 - backupbdd.sh
 
+Pour lancer le script :
+
+```
+./wp_backup.py -i variables.json
+```
+
 Le programme se déroule ainsi :
 - Supprimer les anciens dossiers de sauvegardes en local et ne garder que les 5 derniers jours.
 - Créer le nouveau dossier de sauvegarde avec la date du jour 
@@ -56,19 +62,21 @@ Le programme se déroule ainsi :
   - Sauvegarder le dossier /var/www/html/wordpress et le compresser avec la date du jour : `WordpressBackup.$(date +"%m-%d-%Y").tar.gz`
 - Envoie de la sauvegarde à un serveur FTP distant 
 ## <a name="part4"> 4. Log: </a>
-- Fichier de log généré par le crontab 
-- Envoie du log par Email 
+- Fichier de log généré lors de l'exécution du script `log.txt`
+
 
 ## <a name="part5"> 5. Crontab: </a>
 via crontab -l (on affiche la tâche planifiée à 5h30 tout les jours)
-`30 5 * * 1 sh /root/scriptBackup.py | tee /var/log/scriptBackup.log_$(date +"%m-%d-%y") | mail -s "Backup Log" @EMAIL`
+
+```
+30 5 * * 1 ./path_to_script/wp_backup.py -i variables.json
+```
 
 ## <a name="part6"> 6. Les limitations du programme: </a>
-Des fonctionnalités doivent être rajouté au programme pour avoir une solution plus complète :
+Des fonctionnalités doivent être rajoutées au programme pour avoir une solution plus complète :
 - Supprimer les vieilles sauvegarde de plus de 5 jours sur le serveur FTP.
-- Affiner les logs.
 - Ajouter une fonction pour vérifier l'intégrité des fichiers sauvegardés.
-- Compléter le programme par une solution complémentaire de restauration.
+- Convertir l'appel au script shell en fonction python.
 
 ## <a name="part7"> 7. Contribution: </a>
 Toute [contribution](https://github.com/hanroy/OC-P6/blob/master/CONTRIBUTING.md) est la bienvenue.
