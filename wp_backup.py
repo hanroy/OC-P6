@@ -44,7 +44,7 @@ from ftplib import FTP_TLS, error_perm
 # Log to both logfile and console                        #
 #######################################################
 
-lg.basicConfig(filename="/root/backup-wp/log/log.txt", filemode='a', format='%(asctime)s : %(levelname)s : %(message)s', datefmt='%d/%m/%Y %H:%M', level=lg.DEBUG)
+lg.basicConfig(filename="log.txt", filemode='a', format='%(asctime)s : %(levelname)s : %(message)s', datefmt='%d/%m/%Y %H:%M', level=lg.DEBUG)
 console = lg.StreamHandler()
 console.setLevel(lg.INFO)
 formatter = lg.Formatter('%(message)s')
