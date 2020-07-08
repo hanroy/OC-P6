@@ -3,7 +3,7 @@
 
 # <div align="center"> [AIC] Projet N°6 : wp_backup.py </div>
 # <p align="center"><img width=40% src="https://github.com/hanroy/OC-P6/blob/master/images/python_logo.svg"></p>
-# <div align="center"> Script de Sauvegarde d'un serveur Wordpress sur un serveur FTP distant </div>
+# <div align="center"> Script de sauvegarde d'un serveur Wordpress sur un serveur FTP distant </div>
 
 
 
