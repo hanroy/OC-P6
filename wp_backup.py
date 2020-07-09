@@ -88,7 +88,7 @@ shell_script = (data["shell_script"])
 
 lg.info(f"Delete wordpress backup folder older than {days} days")
 
-def main():
+def clean_local_wpbackup():
 
 	# initialise the count
 	deleted_folders_count = 0
@@ -149,9 +149,7 @@ def get_folder_age(path):
 	return ctime # returning the time
 
 
-if __name__ == '__main__':
-	main()
-
+clean_local_wpbackup()
 
 #######################################################
 # Wordpress create backup folder                      #
