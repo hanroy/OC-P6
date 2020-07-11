@@ -7,7 +7,6 @@
 
 
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Python 3.6.8](https://badgen.net/badge/python/3.6.8)](https://www.python.org/downloads/release/python-368/)
 [![Centos 8](https://badgen.net/badge/CentOS/8)](https://www.centos.org/)
 ![Contibutions welcom](https://img.shields.io/badge/contributions-welcom-orange.svg)
